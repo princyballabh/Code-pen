@@ -1,0 +1,55 @@
+.react-codemirror2 > .CodeMirror:first-child {
+  display: none;
+}
+body{
+  margin: 0px;
+}
+.CodeMirror-linenumbers{
+  background-color: rgb(30, 29, 36);
+}
+.pane{
+  height: 50vh;
+  display: flex;
+}
+.editor-container{
+  background-color: rgb(49, 48, 53);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; 
+  flex-basis: 0;
+  padding: .5rem;
+}
+.editor-container.collapsed{
+  flex-grow: 0;
+}
+.expcolbtn{
+  margin-left: .5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.editor-container.collapsed .CodeMirror-scroll{
+  position: absolute;
+  overflow: hidden !important;
+}
+.CodeMirror{
+  background-color: rgb(30, 29, 36) !important; 
+  height: 100% !important; 
+  color: white !important;
+}
+.editortitle{
+  background-color: rgb(13, 13, 16);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem .5rem .5rem 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.code-mirror-wrapper{
+  flex-grow: 1;
+  overflow: hidden;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
