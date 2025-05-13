@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
-// import useLocalStorage from '../hooks/useLocalStorage';
+import useLocalStorage from "../hooks/useLocalStorage";
 
 function App() {
-  const [html, setHtml] = useState(''); 
-  const [css, setCss] = useState('');     
-  const [js, setJs] = useState('');       
-  const [srcDoc, setSrcDoc] = useState('');
+  const [html, setHtml] = useLocalStorage("html", "");
+  const [css, setCss] = useLocalStorage("css", "");
+  const [js, setJs] = useLocalStorage("js", "");
+  const [srcDoc, setSrcDoc] = useState("");
 
-  // Update the iframe source document when HTML, CSS, or JS changes
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
-        <html>
-          <body>${html}</body>
-          <style>${css}</style>
-          <script>${js}</script>
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <style>${css}</style>
+          </head>
+          <body>
+            ${html}
+            <script>${js}</script>
+          </body>
         </html>
       `);
     }, 250);
@@ -25,35 +29,32 @@ function App() {
   return (
     <>
       <div className="pane top-pane">
-        {/* Pass the saved html, css, and js state values as value props */}
         <Editor
-          language="xml"
           displayName="HTML"
-          value={html}         // Ensure value is passed
-          onChange={setHtml}   // Set the editor state onChange
+          language="xml"
+          value={html}
+          onChange={setHtml}
         />
         <Editor
-          language="css"
           displayName="CSS"
-          value={css}         // Ensure value is passed
-          onChange={setCss}   // Set the editor state onChange
+          language="css"
+          value={css}
+          onChange={setCss}
         />
         <Editor
-          language="javascript"
           displayName="JS"
-          value={js}          // Ensure value is passed
-          onChange={setJs}    // Set the editor state onChange
+          language="javascript"
+          value={js}
+          onChange={setJs}
         />
       </div>
       <div className="pane">
-        {/* iframe displaying the output */}
         <iframe
           srcDoc={srcDoc}
           title="output"
           sandbox="allow-scripts"
-          frameBorder="0"
-          height="100%"
           width="100%"
+          height="100%"
         />
       </div>
     </>
