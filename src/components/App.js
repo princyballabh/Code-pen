@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
+import "codemirror/lib/codemirror.css";
 // import useLocalStorage from '../hooks/useLocalStorage';
 
 function App() {
-  const [html, setHtml] = useState(''); 
-  const [css, setCss] = useState('');     
-  const [js, setJs] = useState('');       
-  const [srcDoc, setSrcDoc] = useState('');
+  const [html, setHtml] = useState("");
+  const [css, setCss] = useState("");
+  const [js, setJs] = useState("");
+  const [srcDoc, setSrcDoc] = useState("");
 
   // Update the iframe source document when HTML, CSS, or JS changes
   useEffect(() => {
@@ -29,20 +30,20 @@ function App() {
         <Editor
           language="xml"
           displayName="HTML"
-          value={html}         // Ensure value is passed
-          onChange={setHtml}   // Set the editor state onChange
+          value={html} // Ensure value is passed
+          onChange={setHtml} // Set the editor state onChange
         />
         <Editor
           language="css"
           displayName="CSS"
-          value={css}         // Ensure value is passed
-          onChange={setCss}   // Set the editor state onChange
+          value={css} // Ensure value is passed
+          onChange={setCss} // Set the editor state onChange
         />
         <Editor
           language="javascript"
           displayName="JS"
-          value={js}          // Ensure value is passed
-          onChange={setJs}    // Set the editor state onChange
+          value={js} // Ensure value is passed
+          onChange={setJs} // Set the editor state onChange
         />
       </div>
       <div className="pane">
